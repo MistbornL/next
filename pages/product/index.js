@@ -1,10 +1,12 @@
 import React from "react";
-
-const Index = () => {
+import Link from "next/dist/client/link";
+const Index = ({ productId = 100 }) => {
   return (
     <div>
       <h1>
-        Product <link href=""></link>
+        <Link href={`/product/${productId}`}>
+          <a>Product 100</a>
+        </Link>
       </h1>
     </div>
   );
