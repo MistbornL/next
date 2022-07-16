@@ -1,6 +1,12 @@
+import User from "../../components/user";
+
 const Users = ({ users }) => {
   return users.map((item, index) => {
-    return <h1 key={index}>{item.name}</h1>;
+    return (
+      <div key={index}>
+        <User user={item} />
+      </div>
+    );
   });
 };
 
