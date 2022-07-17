@@ -13,14 +13,7 @@ const Home = () => {
         <a>product</a>
       </Link>
       <h2>
-        to view Users Click on button{" "}
-        <button
-          onClick={() => {
-            router.push("/users");
-          }}
-        >
-          click here
-        </button>
+        to view Users Click <Link href={"/users"}>Here</Link>
       </h2>
     </div>
   );
