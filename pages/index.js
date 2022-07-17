@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const Home = () => {
-  const router = useRouter();
   return (
     <div>
       <h1>Home Page</h1>
