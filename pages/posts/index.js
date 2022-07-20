@@ -29,7 +29,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: data.slice(0, 50),
+      posts: data,
     },
+    // every 10 seconds page will reload and check for updates in data
+    revalidate: 10,
   };
 }
