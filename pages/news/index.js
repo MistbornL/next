@@ -1,13 +1,11 @@
 function News({ articles }) {
   return (
     <>
-      <h1>
-        <h1>News Article List</h1>
-      </h1>
-      {articles.map((news) => {
+      <h1>News Article List</h1>
+      {articles.map((news, index) => {
         return (
-          <div>
-            <p>news.title</p>
+          <div key={index}>
+            <h2>{news.title}</h2>
             <hr />
           </div>
         );
