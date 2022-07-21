@@ -4,12 +4,11 @@ import { useState } from "react";
 export default function Comments() {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
-  useEffect(() => {}, [comments]);
+
   const fetchComments = async () => {
     const response = await fetch("/api/comments");
     const data = await response.json();
     setComments(data);
-    console.log(comments);
   };
 
   const submitComment = async () => {
@@ -21,7 +20,14 @@ export default function Comments() {
       },
     });
     const data = await response.json();
-    console.log(data);
+  };
+
+  const deleteComment = async (commentId) => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    fetchComments();
   };
   return (
     <div>
@@ -38,6 +44,7 @@ export default function Comments() {
         return (
           <div key={comment.id}>
             <h2>Comment Name: {comment.name}</h2>
+            <button onClick={() => deleteComment(comment.id)}>delete</button>
             <hr />
           </div>
         );
