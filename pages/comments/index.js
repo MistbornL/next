@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 export default function Comments() {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+  useEffect(() => {}, [comments]);
   const fetchComments = async () => {
     const response = await fetch("/api/comments");
     const data = await response.json();
