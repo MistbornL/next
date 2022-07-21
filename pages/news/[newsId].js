@@ -1,6 +1,7 @@
 function ExtractNewsById({ news, newsId }) {
   return (
     <>
+      {/* rendering news by id form ssr fetching function */}
       <h1>News By userId {newsId}</h1>
       {news.map((newsId) => {
         return (
@@ -16,14 +17,17 @@ function ExtractNewsById({ news, newsId }) {
 
 export default ExtractNewsById;
 
+// SSR function for fetching data
 export async function getServerSideProps(context) {
-  const { params } = context;
+  // get dynamic parameter and fetch data
+  const { params, req, res } = context;
+  console.log(req.headers.cookie);
+  res.setHeader("Set-Cookie", ["name=Lasha"]);
   const { newsId } = params;
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts?userId=${newsId}`
   );
   const data = await response.json();
-  console.log(data);
 
   return {
     props: {
